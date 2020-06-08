@@ -7,6 +7,8 @@
  * @package Law
  */
 
+require_once get_template_directory() . '/Law_Header_Menu.php';
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -50,7 +52,8 @@ if ( ! function_exists( 'law_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'law' ),
+				'header-menu' => esc_html__( 'Header Menu', 'law' ),
+				'footer-menu' => esc_html__( 'Footer Menu', 'law' ),
 			)
 		);
 
@@ -143,12 +146,36 @@ add_action( 'widgets_init', 'law_widgets_init' );
  * Enqueue scripts and styles.
  */
 function law_scripts() {
+	wp_enqueue_style( 'law-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'law-fonts', 'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800' );
 	wp_enqueue_style( 'law-animate', get_template_directory_uri() . '/assets/css/animate.css' );
-	wp_enqueue_style( 'law-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'law-icomoon', get_template_directory_uri() . '/assets/css/icomoon.css' );
+	wp_enqueue_style( 'law-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css' );
+	wp_enqueue_style( 'law-magnific', get_template_directory_uri() . '/assets/css/magnific-popup.css' );
+	wp_enqueue_style( 'law-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.min.css' );
+	wp_enqueue_style( 'law-carousel-theme', get_template_directory_uri() . '/assets/css/owl.theme.default.min.css' );
+	wp_enqueue_style( 'law-flexslider', get_template_directory_uri() . '/assets/css/flexslider.css' );
+	wp_enqueue_style( 'law-theme', get_template_directory_uri() . '/assets/css/style.css' );
 	wp_enqueue_style( 'law-my-style', get_template_directory_uri() . '/assets/css/law.css' );
 
-	wp_style_add_data( 'law-style', 'rtl', 'replace' );
+	wp_enqueue_script( 'law-modernizr-js', get_template_directory_uri() . '/assets/js/modernizr-2.6.2.min.js' );
+	wp_enqueue_script( 'law-respond-js', get_template_directory_uri() . '/assets/js/respond.min.js' );
+	wp_script_add_data('law-respond-js', 'conditional', 'lt IE 9' );
+
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js' );
+	wp_enqueue_script( 'jquery' );
+
+	wp_enqueue_script( 'law-jquery-easing-js', get_template_directory_uri() . '/assets/js/jquery.easing.1.3.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-waypoints-js', get_template_directory_uri() . '/assets/js/jquery.waypoints.min.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-stellar-js', get_template_directory_uri() . '/assets/js/jquery.stellar.min.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-carousel-js', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-flexslider-js', get_template_directory_uri() . '/assets/js/jquery.flexslider-min.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-countTo-js', get_template_directory_uri() . '/assets/js/jquery.countTo.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-magnific-js', get_template_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-magnific-popup-js', get_template_directory_uri() . '/assets/js/magnific-popup-options.js', array('jquery'), '', true );
+	wp_enqueue_script( 'law-main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '', true );
 
 	wp_enqueue_script( 'law-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
@@ -185,3 +212,4 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+require_once get_template_directory() . '/inc/tgm/tgm.php';
