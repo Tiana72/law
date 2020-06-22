@@ -1,4 +1,18 @@
-#home-slider > .fw-container-fluid {
+#home-slider > .fw-container-fluid,
+#fh5co-content > .fw-container-fluid {
     padding-left: 0;
     padding-right: 0;
+}
+.fh5co-heading span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: 0px;
+}
+#fh5co-content .fh5co-heading {
+    margin-bottom: 0;
+}
+.fh5co-heading p {
+    margin-bottom: 3em;
 }

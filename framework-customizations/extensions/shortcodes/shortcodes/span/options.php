@@ -24,7 +24,19 @@ $options = array(
     ),
     'span_data_attrs' => array(
         'type'  => 'text',
-        'label' => __('Data Attributes', 'law'),
-        'desc'  => __('Data Attributes', 'law'),
+        'label' => __('Attributes', 'fw'),
+        'desc' => __('Attributes', 'fw'),
     ),
+    'span_wrap' => array(
+        'type'  => 'checkbox',
+        'label' => __('Is Wrapped?', 'law'),
+        'desc'  => __('Wrap in Div?', 'law'),
+        'text'  => __('', 'law'),
+    ),
+    'span_wrap_class' => array(
+        'type'  => 'text',
+        'label' => __('Wrapper Class', 'law'),
+        'desc'  => __('Wrapper Class', 'law'),
+    ),
+
 );
